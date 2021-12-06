@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <title>JQUERY CHAINED DROPDOWN WITH BEST UI</title>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
+  <script>
+    $(document).ready(function()
+    {
+      var $select1=$('#select1'),
+          $select2=$('#select2'),
+          $options=$select2.find('option');
+          $select1.on('change',function()
+          {
+            $select2.html($options.filter('[value="'+this.value+'"]'));
+          }).trigger('change');
+    });
+  </script>
+    <script>
+        $(document).ready(function()
+        {
+            $("#select1").select2({
+
+            });
+            $("#select2").select2({
+
+            });
+        });
+    </script>
+</head>
+<body>
+  <center>
+    <h2>Chained DropDown Example</h2>
+    <h4>Django Web Tutorial</h4>
+    </hr>
+    <select id="select1" style="width:300px;">
+      <option selected disabled="true">Select College</option>
+      {% for cd in college_data %}
+        <option value="{{cd.Cid}}">{{cd.Cname}}</option>
+      {% endfor %}
+    </select>
+    <select id="select2" style="width:300px;">
+          <option selected disabled="true"></option>
+          {% for sd in student_data %}
+            <option value="{{sd.Cid_id}}">{{sd.Sname}}</option>
+          {% endfor %}
+        </select>
+  </center>
+</body>
+</html>
