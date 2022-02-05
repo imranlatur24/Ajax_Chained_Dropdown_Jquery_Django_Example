@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <title>JQUERY CHAINED DROPDOWN WITH BEST UI</title>
@@ -33,24 +34,44 @@
             });
         });
     </script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+            $("#submit").click(function() {
+                var value = $("#select1 option:selected");
+                var value2 = $("#select2 option:selected");
+
+
+<!--                if(value==null)-->
+<!--                {-->
+<!--                    alert('value===null')-->
+<!--                }-->
+                alert("College Selected= "+ value.text()+" & Student Selected= "+value2.text());
+
+            });
+        });
+    </script>
 </head>
 <body>
   <center>
-    <h2>Chained DropDown Example</h2>
+    <h2>Chained DropDown Example of College Student</h2>
     <h4>Django Web Tutorial</h4>
     </hr>
-    <select id="select1" style="width:300px;">
-      <option selected disabled="true">Select College</option>
-      {% for cd in college_data %}
-        <option value="{{cd.Cid}}">{{cd.Cname}}</option>
-      {% endfor %}
-    </select>
-    <select id="select2" style="width:300px;">
-          <option selected disabled="true"></option>
-          {% for sd in student_data %}
-            <option value="{{sd.Cid_id}}">{{sd.Sname}}</option>
-          {% endfor %}
+    <form name="form1">
+        <select id="select1" style="width:300px;" name="select1">
+          <option selected disabled="true">Select College</option>
+              {% for cd in college_data %}
+                <option value="{{cd.Cid}}">{{cd.Cname}}</option>
+              {% endfor %}
         </select>
+        <select id="select2" style="width:300px;" name="select2">
+          <option selected disabled="true">Select Student</option>
+              {% for sd in student_data %}
+                <option value="{{sd.Cid_id}}">{{sd.Sname}}</option>
+              {% endfor %}
+        </select>
+        <button type="submit" onclick="myfunc()"
+                id="submit" type="button" class="btn btn-primary" data-bs-toggle="button" autocomplete="off">click me</button>
+    </form>
   </center>
 </body>
 </html>
